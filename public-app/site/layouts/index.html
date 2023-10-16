@@ -1,0 +1,82 @@
+{{ define "main" }}
+<div class="container">
+
+
+  <div class="row">
+    <div class="col-lg-6 col-md-8 mx-auto text-center">
+      <img src="/images/cinema-movie-ticket-icon.svg" alt="cinema" class="img-thumbnail w-25">
+      <p class="lead">Celebration of Cinema<p>
+        <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+    </div>
+  </div>
+
+
+  <!--
+  <div class="row"><div class="col-lg-6 col-md-8 mx-auto">
+    <div class="input-group">
+       <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Books</button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">genres</a></li>
+        <li><a class="dropdown-item" href="#">Colleges</a></li>
+      </ul> 
+      <input type="text" class="form-control" aria-label="Text input with 2 dropdown buttons">
+      <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
+    </div></div>
+  </div>
+  -->
+
+
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+
+        {{ range (where .Site.Pages "Section" "genres") }}
+          {{ range .Pages }}
+          <a href="/search"
+          class="text-decoration-none">
+          <div class="col d-flex align-items-start"><i class="fa-solid fa-book-open-reader fa-2x"></i>
+            <div class="px-2">
+              <h3 class="fw-bold mb-0 fs-4">{{ .Title }}</h3>
+              <p>{{ .Summary }}</p>
+            </div>
+          </div>
+        </a>
+          {{ end }}
+        {{ end }}
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confimation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}
